@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="view.InputViewTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-02-06T12:59:47" hostname="jang-yehun-ui-MacBookPro.local" time="0.013">
+  <properties/>
+  <testcase name="잘못된 값 - 두번째 정수 대입 실수" classname="view.InputViewTest" time="0.006"/>
+  <testcase name="정상적인 값 - 일반계산기" classname="view.InputViewTest" time="0.001"/>
+  <testcase name="잘못된 값 - 첫번째 정수 대입 실수" classname="view.InputViewTest" time="0.001"/>
+  <testcase name="정상적인 값 - 공학용계산기-삼각함수" classname="view.InputViewTest" time="0.0"/>
+  <testcase name="잘못된 값 - 계산기 이름실수" classname="view.InputViewTest" time="0.001"/>
+  <testcase name="잘못된 값 - 연산 이름실수" classname="view.InputViewTest" time="0.001"/>
+  <testcase name="잘못된 값 - 공학용 계산기 정수대입 실수" classname="view.InputViewTest" time="0.001"/>
+  <testcase name="정상적인 값 - 공학용계산기-읿반사칙연산" classname="view.InputViewTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
