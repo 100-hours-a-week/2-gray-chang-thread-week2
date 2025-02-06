@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="calculatorService.ScientificCalculatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-06T12:19:18" hostname="jang-yehun-ui-MacBookPro.local" time="0.003">
-  <properties/>
-  <testcase name="cos()" classname="calculatorService.ScientificCalculatorTest" time="0.001"/>
-  <testcase name="sin()" classname="calculatorService.ScientificCalculatorTest" time="0.0"/>
-  <testcase name="tan()" classname="calculatorService.ScientificCalculatorTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
