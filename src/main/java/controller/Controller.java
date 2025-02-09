@@ -1,6 +1,6 @@
 package controller;
 
-import calculatorEnum.CalculatorEnum;
+import calculatorEnum.CalculatorName;
 import calculatorEnum.MethodName;
 import calculatorService.*;
 import orderObject.Order;
@@ -10,7 +10,7 @@ import view.OutputView;
 public class Controller {
 
     private Calculator makeCalculator(Order order) {
-        if ((order.getWantToUse()).equals(CalculatorEnum.Normal_calculator)){
+        if ((order.getWantToUse()).equals(CalculatorName.Normal_calculator)){
             return new NormalCalculator(order.getFirstNum(), order.getSecondNum());
         } else if (order.getMethodName().equals(MethodName.sin) || (order.getMethodName().equals(MethodName.cos) || order.getMethodName().equals(MethodName.tan))) {
             return new ScientificCalculator(order.getFirstNum());
@@ -25,11 +25,18 @@ public class Controller {
     }
 
     public void calculate() {
-        InputView inputView = new InputView();
-        Order order = inputView.getCalcInput();
-        Calculator calculator = makeCalculator(order);
-        double answer = makeAnswer(order, calculator);
-        OutputView outputView = new OutputView();
-        outputView.output(answer);
+        while (true){
+            InputView inputView = new InputView();
+            Order order = inputView.getCalcInput();
+            Calculator calculator = makeCalculator(order);
+            double answer = makeAnswer(order, calculator);
+            OutputView outputView = new OutputView();
+            outputView.output(answer);
+            if (inputView.wantToStop().equals("N")) {
+                continue;
+            } else{
+                break;
+            }
+        }
     }
 }

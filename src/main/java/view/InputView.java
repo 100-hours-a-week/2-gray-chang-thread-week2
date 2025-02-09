@@ -1,6 +1,6 @@
 package view;
 
-import calculatorEnum.CalculatorEnum;
+import calculatorEnum.CalculatorName;
 import calculatorEnum.InputMessage;
 import calculatorEnum.MethodName;
 import calculatorEnum.WarningMessage;
@@ -13,14 +13,14 @@ public class InputView {
     public Order getCalcInput(){
         Scanner scanner = new Scanner(System.in);
 
-        CalculatorEnum calcType = getCalculator(scanner);
+        CalculatorName calcType = getCalculator(scanner);
 
         MethodName methodName = matchMethodName(calcType, scanner);
 
         return createOrder(methodName, scanner, calcType);
     }
 
-    private Order createOrder(MethodName methodName, Scanner scanner, CalculatorEnum calcType) {
+    private Order createOrder(MethodName methodName, Scanner scanner, CalculatorName calcType) {
         if (isTriMethod(methodName)){
             System.out.print(InputMessage.SelectOneNumber.getMessage());
             int firstNum = parseInteger(scanner);
@@ -45,21 +45,21 @@ public class InputView {
         }
     }
 
-    private String getMethodNameInput(CalculatorEnum calcType, Scanner scanner) {
-        if (calcType.equals(CalculatorEnum.Normal_calculator)){
+    private String getMethodNameInput(CalculatorName calcType, Scanner scanner) {
+        if (calcType.equals(CalculatorName.Normal_calculator)){
             System.out.println(InputMessage.SelectMethodNormal.getMessage());
-        } else if (calcType.equals(CalculatorEnum.Scientific_calculator)){
+        } else if (calcType.equals(CalculatorName.Scientific_calculator)){
             System.out.println(InputMessage.SelectMethodScientific.getMessage());
         }
         return scanner.nextLine().trim();
     }
 
-    private CalculatorEnum getCalculator(Scanner scanner) {
+    private CalculatorName getCalculator(Scanner scanner) {
         while (true){
             System.out.print(InputMessage.SelectCalculator.getMessage());
             String calcTypeInput = scanner.nextLine().trim();
 
-            CalculatorEnum calcType = parseCalculatorType(calcTypeInput);
+            CalculatorName calcType = parseCalculatorType(calcTypeInput);
             if (calcType != null){
                 return calcType;
             }
@@ -67,20 +67,20 @@ public class InputView {
         }
     }
 
-    private CalculatorEnum parseCalculatorType(String input) {
+    private CalculatorName parseCalculatorType(String input) {
         if ("일반계산기".equals(input)) {
-            return CalculatorEnum.Normal_calculator;
+            return CalculatorName.Normal_calculator;
         } else if ("공학용계산기".equals(input)) {
-            return CalculatorEnum.Scientific_calculator;
+            return CalculatorName.Scientific_calculator;
         }
         return null;
     }
 
-    private MethodName matchMethodName(CalculatorEnum calcType, Scanner scanner) {
+    private MethodName matchMethodName(CalculatorName calcType, Scanner scanner) {
         while (true) {
             String input = getMethodNameInput(calcType, scanner);
             MethodName methodName = MethodNameMapper.getMethodName(input);
-            if (calcType.equals(CalculatorEnum.Normal_calculator) &&
+            if (calcType.equals(CalculatorName.Normal_calculator) &&
                     isTriMethod(methodName)) {
                 System.out.println(WarningMessage.MethodTypeWarning.getMessage());
                 continue;
@@ -94,5 +94,20 @@ public class InputView {
 
     private boolean isTriMethod(MethodName methodName) {
         return methodName.equals(MethodName.sin) || methodName.equals(MethodName.cos) || methodName.equals(MethodName.tan);
+    }
+
+    public String wantToStop(){
+        System.out.println(InputMessage.WantToStop.getMessage());
+        while (true){
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine().trim();
+            if (input.equals("Y") || input.equals("N")){
+                return input;
+            } else{
+                System.out.println(WarningMessage.WantToStomWarning.getMessage());
+                continue;
+            }
+        }
+
     }
 }

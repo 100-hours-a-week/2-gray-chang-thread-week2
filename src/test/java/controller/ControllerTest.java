@@ -1,6 +1,6 @@
 package controller;
 
-import calculatorEnum.CalculatorEnum;
+import calculatorEnum.CalculatorName;
 import calculatorEnum.MethodName;
 import calculatorService.Calculator;
 import calculatorService.NormalCalculator;
@@ -10,8 +10,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ControllerTest {
 
     @Test
@@ -19,12 +17,12 @@ class ControllerTest {
     void makeAnswerNormalCalculator() {
         Controller controller = new Controller();
         //given
-        CalculatorEnum calculatorEnum = CalculatorEnum.Normal_calculator;
+        CalculatorName calculatorName = CalculatorName.Normal_calculator;
         int firstNum = 1;
         int secondNum = 2;
 
         //when
-        Order order = new Order(calculatorEnum, MethodName.plus, firstNum, secondNum);
+        Order order = new Order(calculatorName, MethodName.plus, firstNum, secondNum);
         Calculator calculator = new NormalCalculator(firstNum, secondNum);
         double answer = controller.makeAnswer(order, calculator);
 
@@ -37,13 +35,13 @@ class ControllerTest {
     void makeAnswerScientificCalculator() {
         Controller controller = new Controller();
         //given
-        CalculatorEnum calculatorEnum = CalculatorEnum.Scientific_calculator;
+        CalculatorName calculatorName = CalculatorName.Scientific_calculator;
         int firstNum = 1;
         int secondNum = 2;
 
         //when
-        Order orderPlus = new Order(calculatorEnum, MethodName.plus, firstNum, secondNum);
-        Order orderSin = new Order(calculatorEnum, MethodName.sin, firstNum);
+        Order orderPlus = new Order(calculatorName, MethodName.plus, firstNum, secondNum);
+        Order orderSin = new Order(calculatorName, MethodName.sin, firstNum);
         Calculator calculator = new ScientificCalculator(firstNum, secondNum);
         Calculator calculatorTrival = new ScientificCalculator(firstNum);
         double answerPlus = controller.makeAnswer(orderPlus, calculator);

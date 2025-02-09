@@ -1,15 +1,15 @@
 package orderObject;
 
-import calculatorEnum.CalculatorEnum;
+import calculatorEnum.CalculatorName;
 import calculatorEnum.MethodName;
 
 public class Order {
-    private final CalculatorEnum wantToUse;
+    private final CalculatorName wantToUse;
     private final MethodName methodName;
     private final int firstNum;
     private final Integer secondNum;
 
-    public CalculatorEnum getWantToUse() {
+    public CalculatorName getWantToUse() {
         return wantToUse;
     }
 
@@ -25,14 +25,14 @@ public class Order {
         return secondNum;
     }
 
-    public Order(CalculatorEnum wantToUse, MethodName methodName, int firstNum, int secondNum) {
+    public Order(CalculatorName wantToUse, MethodName methodName, int firstNum, int secondNum) {
         this.wantToUse = wantToUse;
         this.methodName = methodName;
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
 
-    public Order(CalculatorEnum wantToUse, MethodName methodName, int firstNum) {
+    public Order(CalculatorName wantToUse, MethodName methodName, int firstNum) {
         this.wantToUse = wantToUse;
         this.methodName = methodName;
         this.firstNum = firstNum;
