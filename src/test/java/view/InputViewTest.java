@@ -1,10 +1,9 @@
 package view;
 
-import calculatorEnum.CalculatorEnum;
+import calculatorEnum.CalculatorName;
 import calculatorEnum.MethodName;
 import calculatorEnum.WarningMessage;
 import orderObject.Order;
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -45,7 +44,7 @@ class InputViewTest {
         Order order = inputView.getCalcInput();
 
         //then
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Normal_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Normal_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(3);
@@ -64,7 +63,7 @@ class InputViewTest {
         Order order = inputView.getCalcInput();
 
         //then
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Scientific_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Scientific_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(3);
@@ -83,7 +82,7 @@ class InputViewTest {
         Order order = inputView.getCalcInput();
 
         //then
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Scientific_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Scientific_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.sin);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(90);
     }
@@ -103,7 +102,7 @@ class InputViewTest {
 
         //then
         Assertions.assertThat(consoleOutput).contains(WarningMessage.CalculatorTypeWarning.getMessage());
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Normal_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Normal_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(2);
@@ -124,7 +123,7 @@ class InputViewTest {
 
         //then
         Assertions.assertThat(consoleOutput).contains(WarningMessage.MethodTypeWarning.getMessage());
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Normal_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Normal_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(2);
@@ -145,7 +144,7 @@ class InputViewTest {
 
         //then
         Assertions.assertThat(consoleOutput).contains(WarningMessage.IntegerTypeWarning.getMessage());
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Normal_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Normal_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(2);
@@ -166,7 +165,7 @@ class InputViewTest {
 
         //then
         Assertions.assertThat(consoleOutput).contains(WarningMessage.IntegerTypeWarning.getMessage());
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Normal_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Normal_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.plus);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(1);
         Assertions.assertThat(order.getSecondNum()).isEqualTo(2);
@@ -187,8 +186,34 @@ class InputViewTest {
 
         //then
         Assertions.assertThat(consoleOutput).contains(WarningMessage.IntegerTypeWarning.getMessage());
-        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorEnum.Scientific_calculator);
+        Assertions.assertThat(order.getWantToUse()).isEqualTo(CalculatorName.Scientific_calculator);
         Assertions.assertThat(order.getMethodName()).isEqualTo(MethodName.sin);
         Assertions.assertThat(order.getFirstNum()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("그만둘지 말지 결정하는 메서드 - Y")
+    void wantToStopYes() {
+        String input = "Y";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        InputView inputView = new InputView();
+        String response = inputView.wantToStop();
+
+        Assertions.assertThat(response).isEqualTo("Y");
+    }
+
+    @Test
+    @DisplayName("그만둘지 말지 결정하는 메서드 - N")
+    void wantToStopNo() {
+        String input = "N";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        InputView inputView = new InputView();
+        String response = inputView.wantToStop();
+
+        Assertions.assertThat(response).isEqualTo("N");
     }
 }

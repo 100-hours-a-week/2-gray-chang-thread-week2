@@ -1,6 +1,6 @@
 package calculatorEnum;
 
-public enum CalculatorEnum {
+public enum CalculatorName {
     Normal_calculator,
     Scientific_calculator
 }
