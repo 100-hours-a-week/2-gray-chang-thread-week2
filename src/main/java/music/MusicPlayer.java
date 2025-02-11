@@ -21,6 +21,7 @@ public class MusicPlayer implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("음악이 재생됩니다🎧");
         MusicSingletonHolder music = MusicSingletonHolder.getInstance();
         music.musicRun(musicFilePath);
     }
