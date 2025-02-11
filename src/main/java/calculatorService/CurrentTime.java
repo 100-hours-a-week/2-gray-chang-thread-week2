@@ -18,7 +18,7 @@ public class CurrentTime implements Runnable{
             private static final AlarmCurrentTime INSTANCE = new AlarmCurrentTime();
         }
 
-        public static AlarmCurrentTime getInstance() {
+        private static AlarmCurrentTime getInstance() {
             return SingletonHolder.INSTANCE;
         }
 

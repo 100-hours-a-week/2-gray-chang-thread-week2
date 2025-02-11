@@ -105,9 +105,7 @@ public class InputView {
                 return input;
             } else{
                 System.out.println(WarningMessage.WantToStomWarning.getMessage());
-                continue;
             }
         }
-
     }
 }
