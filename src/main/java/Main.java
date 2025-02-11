@@ -1,15 +1,15 @@
-import controller.Controller;
+import controller.ControllerThread;
 import music.MusicPlayer;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "src/main/java/music/yudabinband_hanghhae.WAV";
+        String filePath = "src/main/java/music/Mediterranean-View-Everet-Almond.wav";
         MusicPlayer musicPlayer = new MusicPlayer(filePath);
-        Thread thread = new Thread(musicPlayer);
-        thread.setDaemon(true);
-        thread.start();
+        Thread musicThread = new Thread(musicPlayer);
+        musicThread.start();
 
-        Controller controller = new Controller();
-        controller.calculate();
+        ControllerThread controller = new ControllerThread();
+        Thread controllerThread = new Thread(controller);
+        controllerThread.start();
     }
 }

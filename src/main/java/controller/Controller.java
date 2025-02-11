@@ -25,16 +25,14 @@ public class Controller {
     }
 
     public void calculate() {
-        while (true) {
-            InputView inputView = new InputView();
-            Order order = inputView.getCalcInput();
-            Calculator calculator = makeCalculator(order);
-            double answer = makeAnswer(order, calculator);
-            OutputView outputView = new OutputView();
-            outputView.output(answer);
-            if (inputView.wantToStop().equals("Y")) {
-                break;
-            }
+        InputView inputView = new InputView();
+        Order order = inputView.getCalcInput();
+        Calculator calculator = makeCalculator(order);
+        double answer = makeAnswer(order, calculator);
+        OutputView outputView = new OutputView();
+        outputView.output(answer);
+        if (inputView.wantToStop().equals("N")) {
+            calculate();
         }
     }
 }

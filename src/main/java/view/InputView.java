@@ -97,14 +97,14 @@ public class InputView {
     }
 
     public String wantToStop(){
-        System.out.println(InputMessage.WantToStop.getMessage());
+        System.out.print(InputMessage.WantToStop.getMessage());
         while (true){
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine().trim();
             if (input.equals("Y") || input.equals("N")){
                 return input;
             } else{
-                System.out.println(WarningMessage.WantToStomWarning.getMessage());
+                System.out.print(WarningMessage.WantToStomWarning.getMessage());
             }
         }
     }
