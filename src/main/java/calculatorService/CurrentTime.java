@@ -25,7 +25,9 @@ public class CurrentTime implements Runnable{
         public void currentTime(){
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("현재 시간은 HH시 mm분 ss초 입니다");
-            System.out.println(formatter.format(now));
+            System.out.println("______________________________");
+            System.out.println("| " + formatter.format(now) + " |");
+            System.out.println("------------------------------");
         }
     }
 }
