@@ -48,7 +48,7 @@ public class MusicPlayer implements Runnable {
                     clip.loop(Clip.LOOP_CONTINUOUSLY);
                     Thread.sleep(clip.getMicrosecondLength()/1000);
                 } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
-                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
         }
