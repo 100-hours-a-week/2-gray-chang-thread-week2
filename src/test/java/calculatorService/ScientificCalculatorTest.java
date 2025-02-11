@@ -1,14 +1,10 @@
 package calculatorService;
 
-import calculatorEnum.CalculatorEnum;
-import org.assertj.core.annotations.Beta;
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Math.toRadians;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ScientificCalculatorTest {
 
