@@ -10,7 +10,7 @@ import view.OutputView;
 public class Controller {
 
     private Calculator makeCalculator(Order order) {
-        if ((order.getWantToUse()).equals(CalculatorName.Normal_calculator)){
+        if ((order.getWantToUse()).equals(CalculatorName.Normal_calculator)) {
             return new NormalCalculator(order.getFirstNum(), order.getSecondNum());
         } else if (order.getMethodName().equals(MethodName.sin) || (order.getMethodName().equals(MethodName.cos) || order.getMethodName().equals(MethodName.tan))) {
             return new ScientificCalculator(order.getFirstNum());
@@ -25,16 +25,14 @@ public class Controller {
     }
 
     public void calculate() {
-        while (true){
+        while (true) {
             InputView inputView = new InputView();
             Order order = inputView.getCalcInput();
             Calculator calculator = makeCalculator(order);
             double answer = makeAnswer(order, calculator);
             OutputView outputView = new OutputView();
             outputView.output(answer);
-            if (inputView.wantToStop().equals("N")) {
-                continue;
-            } else{
+            if (inputView.wantToStop().equals("Y")) {
                 break;
             }
         }
